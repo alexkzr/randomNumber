@@ -1,65 +1,61 @@
-const input = document.querySelector('.input');
-const button = document.querySelector('button');
-const resultDiv = document.querySelector('.results');
-const headerDiv = document.querySelector('.header-result');
-headerDiv.style.display = 'none';
-const clearButton = document.getElementById('clear');
+document.addEventListener('DOMContentLoaded', () => {
+  const input = document.querySelector('.input');
+  const button = document.querySelector('.generate');
+  const resultDiv = document.querySelector('.results');
+  const headerDiv = document.querySelector('.header-result');
+  headerDiv.style.display = 'none';
+  const clearButton = document.getElementById('clear');
 
-clearButton.addEventListener('click', () => {
-  localStorage.removeItem('list');
-});
+  clearButton.addEventListener('click', () => {
+    localStorage.removeItem('list');
+  });
 
-function createSpan(parent, content, i) {
-  const comment = document.createElement('textarea');
-  let p = document.createElement('p');
-  p.textContent = `Ticket #`;
-  let span = document.createElement('div');
-  let div = document.createElement('div');
-  const br = document.createElement('br');
-  const commentDiv = document.createElement('div');
-  const commentLabel = document.createElement('label');
+  function createSpan(parent, content) {
+    const comment = document.createElement('textarea');
+    let p = document.createElement('p');
+    p.textContent = `Ticket #`;
+    let span = document.createElement('div');
+    let div = document.createElement('div');
+    const br = document.createElement('br');
+    const commentDiv = document.createElement('div');
+    const commentLabel = document.createElement('label');
 
-  div.className = 'numberContainer';
+    div.className = 'numberContainer';
 
-  parent.appendChild(div);
-  div.appendChild(p);
-  div.appendChild(span);
-  div.appendChild(commentLabel);
-  div.appendChild(comment);
-  parent.appendChild(commentDiv);
-  div.appendChild(br);
+    parent.appendChild(div);
+    div.appendChild(p);
+    div.appendChild(span);
+    div.appendChild(commentLabel);
+    div.appendChild(comment);
+    parent.appendChild(commentDiv);
+    div.appendChild(br);
 
-  span.value = content;
-  commentLabel.textContent = 'Comments: ';
-}
+    span.innerHTML = content;
+    commentLabel.textContent = 'Comments: ';
 
-function number(usrVar) {
-  let min = usrVar / 10;
-  let result = Math.floor(Math.random() * (usrVar - min + 1) + min);
-  let resultArr = [];
-  resultArr.push(result);
-  for (let i = 0; i < resultArr.length; i++) {
-    createSpan(resultDiv, resultArr[i], i);
+    localStorage.setItem('list', resultDiv.innerHTML);
+    localStorage.setItem('text', comment.textContent);
   }
-}
 
-button.addEventListener('click', e => {
-  e.preventDefault();
-  function usrVar() {
-    if (Number.isNaN(input.value)) {
-      alert('Sorry, not a number, try again');
-    } else {
-      return input.value;
+  function number(usrVar) {
+    let min = usrVar / 10;
+    let result = Math.floor(Math.random() * (usrVar - min) + min);
+    let resultArr = [];
+    resultArr.push(result);
+    for (let i = 0; i < resultArr.length; i++) {
+      createSpan(resultDiv, resultArr[i]);
     }
   }
-  headerDiv.style.display = 'block';
-  number(usrVar());
-  localStorage.setItem('list', resultDiv.innerHTML);
-});
 
-function getData() {
-  if (localStorage.getItem('list')) {
-    resultDiv.innerHTML = localStorage.getItem('list');
+  button.addEventListener('click', () => {
+    headerDiv.style.display = 'block';
+    number(input.value);
+  });
+
+  function getData() {
+    if (localStorage.getItem('list')) {
+      resultDiv.innerHTML = localStorage.getItem('list', 'text');
+    }
   }
-}
-getData();
+  getData();
+});
