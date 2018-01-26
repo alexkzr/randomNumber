@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash|Sedgwick+Ave');
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+#cont {
+  margin: 0 auto;
+  box-sizing: border-box;
+  max-width: 50%;
+  min-height: 400px;
+  background-color: #3f778d;
+  border-radius: 5px;
+}
+#footer {
+  margin: 0 auto;
+  height: 50px;
+  background-color: #3f778d;
+  border-radius: 5px;
+  max-width: 50%;
+}
+.numberContainer {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+.numberContainer span {
+  grid-gap: 2fr;
+}
+header {
+  padding: 20px;
+}
+header h1 {
+  color: #e3bd35;
+  text-align: center;
+  font-family: 'Sedgwick Ave', cursive;
+  padding-bottom: 10px;
+}
+
+.results {
+  padding: 0 50px 50px 50px;
+}
+
+.header-result {
+  background-color: #d8ecf3;
+  width: inherit;
+  margin: 15px 0 15px 0;
+  display: flex;
+}
+
+.header-result >  {
+  padding: 20px;
+}
+.header-result h2 {
+  color: #af2762;
+  padding: 15px 0px 20px 100px;
+  font-family: 'Berkshire Swash', cursive;
+}

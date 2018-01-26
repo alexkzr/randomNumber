@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" href="style.css">
+   <title>Random ticket number generator</title>
+</head>
+
+<body>
+   <div id="cont">
+      <header>
+         <h1>
+            Welcome to the random number generator!
+         </h1>
+         <input type="text" placeholder="How large a number do you need?" class="input">
+         <button type="submit">Generate</button>
+         <button id="clear" value="Refresh Page" onClick="window.location.reload()">Clear All</button>
+      </header>
+
+
+      <div class="header-result">
+         <h2>Here are your random numbers:</h2>
+
+         <div class="results">
+         </div>
+      </div>
+      <div id="footer">&copy Kozyrev AS</div>
+   </div>
+
+
+   <script src="app.js"></script>
+</body>
+
+</html>
